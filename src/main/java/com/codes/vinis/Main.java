@@ -1,9 +1,9 @@
 package com.codes.vinis;
 
-import com.codes.vinis.vLogger.colors.DarkRed;
-import com.codes.vinis.vLogger.colors.Gray;
-import com.codes.vinis.vLogger.colors.Green;
-import com.codes.vinis.vLogger.colors.Orange;
+import com.codes.vinis.vLogger.color.defaultColors.DarkRed;
+import com.codes.vinis.vLogger.color.defaultColors.Gray;
+import com.codes.vinis.vLogger.color.defaultColors.Green;
+import com.codes.vinis.vLogger.color.defaultColors.Orange;
 import org.jetbrains.annotations.NotNull;
 
 public class Main {
