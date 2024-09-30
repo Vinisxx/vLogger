@@ -1,15 +1,31 @@
 package com.codes.vinis;
 
-import com.codes.vinis.vLogger.logLevels.Debug;
-import com.codes.vinis.vLogger.logLevels.Error;
-import com.codes.vinis.vLogger.logLevels.Info;
-import com.codes.vinis.vLogger.logLevels.Warn;
+import com.codes.vinis.vLogger.colors.DarkRed;
+import com.codes.vinis.vLogger.colors.Gray;
+import com.codes.vinis.vLogger.colors.Green;
+import com.codes.vinis.vLogger.colors.Orange;
 import org.jetbrains.annotations.NotNull;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        @NotNull Gray gray = new Gray();
+
+        System.out.println(gray);
+
+        @NotNull Green green = new Green();
+
+        System.out.println(green);
+
+        @NotNull Orange orange = new Orange();
+
+        System.out.println(orange);
+
+        @NotNull DarkRed darkRed = new DarkRed();
+
+        System.out.println(darkRed);
+        /*
         @NotNull Info info = new Info("This is a info");
 
         System.out.println(info.getMessage());
@@ -25,5 +41,7 @@ public class Main {
         @NotNull Error error = new Error("This is a error");
 
         System.out.println(error.getMessage());
+
+         */
     }
 }
