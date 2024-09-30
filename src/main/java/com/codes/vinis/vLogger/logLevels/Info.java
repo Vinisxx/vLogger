@@ -1,26 +1,43 @@
 package com.codes.vinis.vLogger.logLevels;
 
+import com.codes.vinis.vLogger.color.Color;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.StringJoiner;
 
-public class Info {
+public class Info implements LogLevel {
 
     private @NotNull String message;
 
-    public Info (@NotNull String message) {
+    private @NotNull Color color;
+
+    public Info (@NotNull String message, @NotNull Color color) {
 
         this.message = message;
+        this.color = color;
     }
 
+    @Override
     public @NotNull String getMessage() {
 
         return message;
     }
 
+    @Override
     public void setMessage(@NotNull String message) {
 
         this.message = message;
+    }
+
+    @Override
+    public @NotNull Color getColor() {
+
+        return color;
+    }
+
+    @Override
+    public void setColor(@NotNull Color color) {
+
+        this.color = color;
     }
 
     @Override
@@ -30,20 +47,14 @@ public class Info {
         if (o == null || getClass() != o.getClass()) return false;
 
         @NotNull Info info = (Info) o;
-        return message.equals(info.message);
+        return getMessage().equals(info.getMessage()) && getColor().equals(info.getColor());
     }
 
     @Override
     public int hashCode() {
 
-        return message.hashCode();
-    }
-
-    @Override
-    public String toString() {
-
-        return new StringJoiner(", ", Info.class.getSimpleName() + "[", "]")
-                .add("message='" + message + "'")
-                .toString();
+        int result = getMessage().hashCode();
+        result = 31 * result + getColor().hashCode();
+        return result;
     }
 }
