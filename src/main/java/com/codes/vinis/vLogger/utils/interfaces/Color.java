@@ -1,4 +1,4 @@
-package com.codes.vinis.vLogger.interfaces;
+package com.codes.vinis.vLogger.utils.interfaces;
 
 import org.jetbrains.annotations.NotNull;
 

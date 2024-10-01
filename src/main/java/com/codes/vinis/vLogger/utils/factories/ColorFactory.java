@@ -1,4 +1,4 @@
-package com.codes.vinis.vLogger.factories;
+package com.codes.vinis.vLogger.utils.factories;
 
 import com.codes.vinis.vLogger.color.AbstractColor;
 import org.jetbrains.annotations.NotNull;

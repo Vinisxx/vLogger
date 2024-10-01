@@ -1,8 +1,8 @@
 package com.codes.vinis.vLogger.logLevels.defaultLevels;
 
 import com.codes.vinis.vLogger.config.ConfigLoader;
-import com.codes.vinis.vLogger.factories.ColorFactory;
-import com.codes.vinis.vLogger.interfaces.Color;
+import com.codes.vinis.vLogger.utils.factories.ColorFactory;
+import com.codes.vinis.vLogger.utils.interfaces.Color;
 import com.codes.vinis.vLogger.logLevels.LogLevelAbstract;
 import org.jetbrains.annotations.NotNull;
 
@@ -10,9 +10,9 @@ import java.io.IOException;
 
 public class Error extends LogLevelAbstract {
 
-    public Error(@NotNull String message) {
+    public Error() {
 
-        super(message, getDefaultColor());
+        super("Error", getDefaultColor());
     }
 
     private static @NotNull Color getDefaultColor() {
