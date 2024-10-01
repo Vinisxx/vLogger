@@ -1,6 +1,5 @@
-package com.codes.vinis.vLogger.logLevels;
+package com.codes.vinis.vLogger.interfaces;
 
-import com.codes.vinis.vLogger.color.Color;
 import org.jetbrains.annotations.NotNull;
 
 public interface LogLevel {
