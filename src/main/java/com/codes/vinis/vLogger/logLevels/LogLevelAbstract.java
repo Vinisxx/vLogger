@@ -1,34 +1,22 @@
 package com.codes.vinis.vLogger.logLevels;
 
-import com.codes.vinis.vLogger.interfaces.Color;
-import com.codes.vinis.vLogger.interfaces.LogLevel;
-import com.codes.vinis.vLogger.logLevels.defaultLevels.Info;
+import com.codes.vinis.vLogger.utils.interfaces.Color;
+import com.codes.vinis.vLogger.utils.interfaces.LogLevel;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.StringJoiner;
 
 public class LogLevelAbstract implements LogLevel {
 
-    private @NotNull String message;
+    private final @NotNull String name;
+
 
     private @NotNull Color color;
 
-    public LogLevelAbstract (@NotNull String message, @NotNull Color color) {
+    public LogLevelAbstract (@NotNull String name, @NotNull Color color) {
 
-        this.message = message;
+        this.name = name;
         this.color = color;
-    }
-
-    @Override
-    public @NotNull String getMessage() {
-
-        return message;
-    }
-
-    @Override
-    public void setMessage(@NotNull String message) {
-
-        this.message = message;
     }
 
     @Override
@@ -44,29 +32,35 @@ public class LogLevelAbstract implements LogLevel {
     }
 
     @Override
+    public @NotNull String getName() {
+
+        return name;
+    }
+
+    @Override
     public boolean equals(Object o) {
 
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         @NotNull LogLevelAbstract logLevel = (LogLevelAbstract) o;
-        return getMessage().equals(logLevel.getMessage()) && getColor().equals(logLevel.getColor());
+        return getName().equals(logLevel.getName()) && getColor().equals(logLevel.getColor());
     }
 
     @Override
     public int hashCode() {
 
-        int result = getMessage().hashCode();
+        int result = getName().hashCode();
         result = 31 * result + getColor().hashCode();
         return result;
     }
 
     @Override
-    public String toString() {
+    public @NotNull String toString() {
 
         return new StringJoiner(", ", LogLevelAbstract.class.getSimpleName() + "[", "]")
-                .add("message='" + message + "'")
-                .add("color=" + color)
+                .add("message='" + getName() + "'")
+                .add("color=" + getColor())
                 .toString();
     }
 }

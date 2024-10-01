@@ -1,11 +1,10 @@
-package com.codes.vinis.vLogger.interfaces;
+package com.codes.vinis.vLogger.utils.interfaces;
 
 import org.jetbrains.annotations.NotNull;
 
 public interface LogLevel {
 
-    @NotNull String getMessage();
-    void setMessage(@NotNull String message);
+    @NotNull String getName();
 
     @NotNull Color getColor();
     void setColor(@NotNull Color color);
