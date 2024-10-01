@@ -1,6 +1,5 @@
-package com.codes.vinis.vLogger.color;
+package com.codes.vinis.vLogger.interfaces;
 
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 public interface Color {
