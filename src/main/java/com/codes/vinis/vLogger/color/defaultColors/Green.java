@@ -1,56 +1,11 @@
 package com.codes.vinis.vLogger.color.defaultColors;
 
-import com.codes.vinis.vLogger.color.Color;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
+import com.codes.vinis.vLogger.color.AbstractColor;
 
-public final class Green implements Color {
-
-    private final @NotNull String name;
-
-    private final @NotNull String color;
+public final class Green extends AbstractColor {
 
     public Green() {
 
-        this.name = "Green";
-        this.color = "\u001B[32m";
-    }
-
-    @Override
-    public @NotNull String getName() {
-
-        return name;
-    }
-
-    @Override
-    public @NotNull String getColor() {
-
-        return color;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        @NotNull Green green = (Green) o;
-        return getName().equals(green.getName()) && getColor().equals(green.getColor());
-    }
-
-    @Override
-    public int hashCode() {
-
-        int result = getName().hashCode();
-        result = 31 * result + getColor().hashCode();
-
-        return result;
-    }
-
-    @Contract(pure = true)
-    @Override
-    public @NotNull String toString() {
-
-        return "{ \"Color\": \"" + getColor() + getName() + "\u001B[0m\" }";
+        super("Green", "\u001B[32m");
     }
 }
