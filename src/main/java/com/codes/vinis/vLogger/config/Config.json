@@ -1,6 +1,13 @@
 {
-  "ColorDebug": "Green",
-  "ColorInfo": "Gray",
-  "ColorWarn": "Orange",
-  "ColorError": "DarkRed"
+  "ColorsConfig": {
+
+    "ColorDebug": "Green",
+    "ColorInfo": "Gray",
+    "ColorWarn": "Orange",
+    "ColorError": "DarkRed"
+  },
+
+  "DefaultFormatter": "SimpleFormatter",
+
+  "DefaultHandler" : "ConsoleHandler"
 }
