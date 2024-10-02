@@ -5,4 +5,6 @@ import org.jetbrains.annotations.NotNull;
 public interface Handler {
 
     void handle(@NotNull LogLevel logLevel, @NotNull String message, @NotNull Class<?> aClass);
+
+    @NotNull String getName();
 }
