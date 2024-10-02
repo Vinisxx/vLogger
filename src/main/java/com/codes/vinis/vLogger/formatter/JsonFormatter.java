@@ -9,7 +9,11 @@ import java.time.format.DateTimeFormatter;
 
 public class JsonFormatter implements Formatter {
 
+    private final @NotNull String name;
+
     public JsonFormatter() {
+
+        this.name = "JsonFormatter";
     }
 
     @Override
@@ -19,7 +23,6 @@ public class JsonFormatter implements Formatter {
 
         @NotNull String timestamp = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
-        // Monta o JSON manualmente
         return String.format(
                 "{ \"timestamp\": \"%s\", \"logLevel\": \"%s\", \"className\": \"%s\", \"message\": \"%s\" }",
                 timestamp,
@@ -27,5 +30,11 @@ public class JsonFormatter implements Formatter {
                 aClass.getSimpleName(),
                 message
         );
+    }
+
+    @Override
+    public @NotNull String getName() {
+
+        return name;
     }
 }

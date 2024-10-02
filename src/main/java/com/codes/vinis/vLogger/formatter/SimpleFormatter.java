@@ -9,9 +9,11 @@ import java.time.format.DateTimeFormatter;
 
 public class SimpleFormatter implements Formatter {
 
+    private final @NotNull String name;
 
     public SimpleFormatter() {
 
+        this.name = "SimpleFormatter";
     }
 
     @Override
@@ -31,5 +33,11 @@ public class SimpleFormatter implements Formatter {
                 "\u001B[0m",
                 aClass.getSimpleName()
         );
+    }
+
+    @Override
+    public @NotNull String getName() {
+
+        return name;
     }
 }
