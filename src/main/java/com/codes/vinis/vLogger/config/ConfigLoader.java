@@ -13,13 +13,24 @@ import java.util.Map;
 public class ConfigLoader {
 
     private static @Nullable ConfigLoader instance;
-    private @NotNull Map<@NotNull String, @NotNull String> config;
+
+    private @NotNull Map<@NotNull String, @NotNull String> colorConfig;
+
+    private @NotNull Map<@NotNull String, Object> fullConfig;
 
     private ConfigLoader(@NotNull String configFilePath) throws IOException {
 
-        this.config = loadConfig(configFilePath);
+        this.fullConfig = loadConfig(configFilePath);
+        this.colorConfig = extractColorsConfig(fullConfig);
     }
 
+    /**
+     * Returns the singleton instance, initializing it if necessary.
+     *
+     * @param configFilePath the path to the configuration file
+     * @return the ConfigLoader instance
+     * @throws IOException if the file cannot be read
+     */
     public static @Nullable ConfigLoader getInstance(@NotNull String configFilePath) throws IOException {
 
         if (getInstance() == null) {
@@ -30,24 +41,36 @@ public class ConfigLoader {
         return getInstance();
     }
 
-    private @NotNull Map<@NotNull String, @NotNull String> loadConfig(@NotNull String configFilePath) throws IOException {
+    private @NotNull Map<@NotNull String, Object> loadConfig(@NotNull String configFilePath) throws IOException {
 
         @NotNull Gson gson = new Gson();
 
-        @NotNull Type configMapType = new TypeToken<@NotNull Map<@NotNull String, @NotNull String>>() {}.getType();
+        @NotNull Type configMapType = new TypeToken<@NotNull Map<@NotNull String, Object>>() {}.getType();
 
-        @NotNull Map<@NotNull String, @NotNull String> configMap = gson.fromJson(new FileReader(configFilePath), configMapType);
-
-        return configMap;
+        return gson.fromJson(new FileReader(configFilePath), configMapType);
     }
 
+    private @NotNull Map<@NotNull String, @NotNull String> extractColorsConfig(@NotNull Map<@NotNull String, Object> fullConfig) {
+
+        @SuppressWarnings("unchecked")
+        @NotNull Map<@NotNull String, @NotNull String> colorsConfig = (Map<@NotNull String, @NotNull String>) fullConfig.get("ColorsConfig");
+
+        return colorsConfig;
+    }
+
+
+    /**
+     * Returns the color code for a given log level.
+     *
+     * @param logLevel the log level (e.g., "INFO")
+     * @return the corresponding color code
+     */
     public @NotNull String getColorForLogLevel(@NotNull String logLevel) {
 
-        return getConfig().get(logLevel);
+        return colorConfig.get(logLevel);
     }
 
     public static @Nullable ConfigLoader getInstance() {
-
         return instance;
     }
 
@@ -56,13 +79,15 @@ public class ConfigLoader {
         ConfigLoader.instance = instance;
     }
 
-    public @NotNull Map<@NotNull String, @NotNull String> getConfig() {
+    public @NotNull Map<@NotNull String, Object> getFullConfig() {
 
-        return config;
+        return fullConfig;
     }
 
-    public void setConfig(@NotNull Map<@NotNull String, @NotNull String> config) {
+    public void setFullConfig(@NotNull Map<@NotNull String, Object> config) {
 
-        this.config = config;
+        this.fullConfig = config;
+
+        this.colorConfig = extractColorsConfig(fullConfig);
     }
 }

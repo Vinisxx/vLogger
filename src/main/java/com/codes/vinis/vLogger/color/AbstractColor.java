@@ -6,9 +6,24 @@ import org.jetbrains.annotations.NotNull;
 
 public class AbstractColor implements Color {
 
-    private final @NotNull String name;
+    /**
+     * Represents a color with a name and an associated ANSI color code.
+     * This class implements the {@link Color} interface and provides
+     * methods to access the name and the ANSI code of the color.
+     * <p>
+     * Equality and hashing are based on both the color's name and its code.
+     * </p>
+     */
 
+    private final @NotNull String name;
     private final @NotNull String color;
+
+    /**
+     * Constructs an AbstractColor with a specified name and ANSI color code.
+     *
+     * @param name  the name of the color (e.g., "Red")
+     * @param color the ANSI code of the color (e.g., "\u001B[31m")
+     */
 
     public AbstractColor(@NotNull String name, @NotNull String color) {
 

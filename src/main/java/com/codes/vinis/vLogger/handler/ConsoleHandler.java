@@ -1,5 +1,6 @@
 package com.codes.vinis.vLogger.handler;
 
+import com.codes.vinis.vLogger.utils.factories.FormatterFactory;
 import com.codes.vinis.vLogger.utils.interfaces.Formatter;
 import com.codes.vinis.vLogger.utils.interfaces.Handler;
 import com.codes.vinis.vLogger.utils.interfaces.LogLevel;
@@ -11,11 +12,11 @@ public class ConsoleHandler implements Handler {
 
     private final @NotNull Formatter formatter;
 
-    public ConsoleHandler(@NotNull Formatter formatter) {
+    public ConsoleHandler(@NotNull FormatterFactory.FormatterType formatterType) {
 
         this.name = "ConsoleHandler";
 
-        this.formatter = formatter;
+        this.formatter = FormatterFactory.createFormatter(formatterType);
     }
 
     @Override

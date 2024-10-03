@@ -13,7 +13,7 @@ public class FormatterFactory {
         JSON;
     }
 
-    public static @NotNull Formatter createFormatter(FormatterType type) {
+    public static @NotNull Formatter createFormatter(@NotNull FormatterType type) {
 
         if (type == FormatterType.JSON) {
 

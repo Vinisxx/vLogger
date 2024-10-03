@@ -5,9 +5,5 @@
     "ColorInfo": "Gray",
     "ColorWarn": "Orange",
     "ColorError": "DarkRed"
-  },
-
-  "DefaultFormatter": "SimpleFormatter",
-
-  "DefaultHandler" : "ConsoleHandler"
+  }
 }

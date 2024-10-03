@@ -1,5 +1,6 @@
 package com.codes.vinis.vLogger.handler;
 
+import com.codes.vinis.vLogger.utils.factories.FormatterFactory;
 import com.codes.vinis.vLogger.utils.interfaces.Formatter;
 import com.codes.vinis.vLogger.utils.interfaces.Handler;
 import com.codes.vinis.vLogger.utils.interfaces.LogLevel;
@@ -17,10 +18,12 @@ public class FileHandler implements Handler {
 
     private final @NotNull String filePath;
 
-    public FileHandler(@NotNull Formatter formatter, @NotNull String filePath) {
+    public FileHandler(@NotNull FormatterFactory.FormatterType formatterType, @NotNull String filePath) {
 
         this.name = "FileHandler";
-        this.formatter = formatter;
+
+        this.formatter = FormatterFactory.createFormatter(formatterType);
+
         this.filePath = filePath;
     }
 
